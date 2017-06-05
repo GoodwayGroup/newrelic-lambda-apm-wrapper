@@ -1,6 +1,6 @@
 {
   "name": "newrelic-lambda-apm-wrapper",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "AWS Lambda handler wrapper for Newrelic APM",
   "main": "index.js",
   "author": "Julian Lannigan <julian.lannigan@gmail.com>",
