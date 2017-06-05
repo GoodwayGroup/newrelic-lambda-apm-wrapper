@@ -14,6 +14,7 @@ const Promise = require('bluebird');
 exports.createBackgroundTransaction = function (newrelic, name, group, handle) {
     const args = Array.prototype.slice.call(arguments);
     const fn = args[args.length - 1];
+    const nrShutdownSettings = { collectPendingData: true, timeout: 3000 };
 
     const wrappedFn = (event, context, callback) => {
         return Promise.try(() => {
@@ -21,12 +22,12 @@ exports.createBackgroundTransaction = function (newrelic, name, group, handle) {
         })
         .then((val) => {
             newrelic.endTransaction();
-            callback(null, val);
+            newrelic.shutdown(nrShutdownSettings, error => callback(null, val));
         })
         .catch((err) => {
             newrelic.noticeError(err);
             newrelic.endTransaction();
-            callback(err, null);
+            newrelic.shutdown(nrShutdownSettings, error => callback(err, null));
         });
     };
 
