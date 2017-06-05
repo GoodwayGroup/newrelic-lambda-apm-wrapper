@@ -1,6 +1,6 @@
 # Newrelic Lambda APM Wrapper
 
-Currently, only wraps the a background transaction.
+Currently, only wraps a background transaction.
 
 ## Example
 
