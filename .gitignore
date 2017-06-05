@@ -1,0 +1,9 @@
+/node_modules
+/.webpack
+.env
+.env.*
+/.nyc_output
+coverage/
+npm-debug.log
+.serverless/
+logFiles.csv
